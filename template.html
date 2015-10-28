@@ -1,22 +1,17 @@
 <div class="container">
-    <div class="header">
-         <h2>Who to follow</h2><a href="#" class="refresh">Refresh</a>
-    </div>
-    <ul class="suggestions">
-        <li class="suggestion1">
-            <img />
-            <a href="#" target="_blank" class="username">this will not be displayed</a>
-            <a href="#" class="close close1">x</a>
-        </li>
-        <li class="suggestion2">
-            <img />
-            <a href="#" target="_blank" class="username">neither this</a>
-            <a href="#" class="close close2">x</a>
-        </li>
-        <li class="suggestion3">
-            <img />
-            <a href="#" target="_blank" class="username">nor this</a>
-            <a href="#" class="close close3">x</a>
-        </li>
-    </ul>
+  <div class="header">
+     <h2>Who to follow</h2>
+     <a on-click="refresh">Refresh</a>
+  </div>
+  <ul class="suggestions">
+    {{#each suggestions}} {{>user}} {{/each}}
+  </ul>
 </div>
+
+{{#partial user}}
+  <li>
+    <img src="{{avatar_url}}" />
+    <a href="{{html_url}}" target="_blank">{{login}}</a>
+    <a on-click="close:{{@index}}">x</a>
+  </li>
+{{/partial user}}
